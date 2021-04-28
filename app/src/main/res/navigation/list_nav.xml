@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list_nav"
+    app:startDestination="@id/todolistDisplayFragment2">
+    <fragment
+        android:id="@+id/todolistDisplayFragment2"
+        android:name="com.example.simpleapp.TodolistDisplayFragment"
+        android:label="fragment_todolist_display"
+        tools:layout="@layout/fragment_todolist_display" />
+    <fragment
+        android:id="@+id/todolistAddFragment2"
+        android:name="com.example.simpleapp.TodolistAddFragment"
+        android:label="fragment_todolist_add"
+        tools:layout="@layout/fragment_todolist_add" />
+</navigation>
