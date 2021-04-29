@@ -73,19 +73,21 @@ public class AddTaskActivity extends AppCompatActivity {
         btAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addTasks();
+                if (addTasks() == -1) {
+                    Toast.makeText(AddTaskActivity.this, "Bạn chưa nhập đủ thông tin!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
 
-//        Button backFromAddTask = findViewById(R.id.button_back_add_task);
-//        backFromAddTask.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(AddTaskActivity.this, HomeFragment.class);
-//                startActivity(intent);
-//            }
-//        });
+        Button backFromAddTask = findViewById(R.id.button_back_add_task);
+        backFromAddTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddTaskActivity.this, AddSpend.class);
+                startActivity(intent);
+            }
+        });
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void updateLabel() {
@@ -99,18 +101,22 @@ public class AddTaskActivity extends AppCompatActivity {
         edtDueDate = findViewById(R.id.edt_task_due_date);
         btAddTask = findViewById(R.id.bt_task_add_button);
     }
-    private void addTasks() {
+    private int addTasks() {
         String content = edtContentTask.getText().toString().trim();
         String dueDate = edtDueDate.getText().toString().trim();
-        if (content.equals("") || dueDate.equals("")) return;
+
+        if (content.equals("") || dueDate.equals("")) {
+            return -1;
+        }
         Tasks tasks = new Tasks(content, dueDate, false);
         TasksDatabase.getInstance(this).tasksDAO().insertTasks(tasks);
-        Toast.makeText(this, "Add task successfully", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Thêm nhiệm vụ thành công!", Toast.LENGTH_LONG).show();
 
         edtContentTask.setText("");
         edtDueDate.setText("");
         listTasks = TasksDatabase.getInstance(this).tasksDAO().getListTasks();
         tasksAdapter.setData(listTasks);
+        return 1;
     }
 
 }

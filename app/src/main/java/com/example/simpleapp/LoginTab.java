@@ -29,8 +29,8 @@ public class LoginTab extends AppCompatActivity {
     public void openLoginLayout() {
         String enterMail = edtEmail.getText().toString().trim();
         String enterPass = edtPass.getText().toString().trim();
-//        if (true){
-        if (enterMail.equals("dangdung2301@gmail.com") && enterPass.equals("dung123")) {
+        if (true){
+//        if (enterMail.equals("dangdung2301@gmail.com") && enterPass.equals("dung123")) {
             Intent intent = new Intent(LoginTab.this, AddSpend.class);
             startActivity(intent);
         }

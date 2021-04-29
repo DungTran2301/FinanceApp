@@ -48,7 +48,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="436dp"
+        android:layout_width="match_parent"
         android:layout_height="255dp"
         android:background="@drawable/home_common_bg"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +74,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/user_pic"
+            android:background="@drawable/use_dang_dung"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -142,13 +142,26 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="88dp"
+                android:layout_marginTop="68dp"
                 android:text="@string/app_name"
-                android:textColor="#892587"
+                android:textColor="#D52027"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/home_text_welcom" />
+
+            <TextView
+                android:id="@+id/comment"
+                android:layout_width="134dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="4dp"
+                android:text="comment"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/home_text_sum_money" />
 
             <Button
                 android:id="@+id/home_summary"
@@ -179,8 +192,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_goods_home"
-        android:layout_width="433dp"
-        android:layout_height="297dp"
+        android:layout_width="match_parent"
+        android:layout_height="307dp"
         android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

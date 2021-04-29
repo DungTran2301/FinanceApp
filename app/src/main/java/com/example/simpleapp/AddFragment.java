@@ -2,8 +2,10 @@ package com.example.simpleapp;
 
 import android.app.Activity;
 import android.icu.text.SimpleDateFormat;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -24,9 +27,10 @@ import com.example.simpleapp.database.GoodsDatabase;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import java.sql.Date;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Locale;
@@ -39,8 +43,8 @@ import java.util.Locale;
 public class AddFragment extends Fragment {
     private EditText edtGoodsName;
     private EditText edtGoodsPrice;
-    private EditText edtPersonAdd;
     private RecyclerView rcvGoods;
+    private CheckBox cbDung, cbAnh;
     private View view;
     private Button btnAdd;
     private GoodsAdapter goodsAdapter;
@@ -97,71 +101,79 @@ public class AddFragment extends Fragment {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         rcvGoods.setLayoutManager(linearLayoutManager);
-
         rcvGoods.setAdapter(goodsAdapter);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
-                addGoods();
+                try {
+                    addGoods();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
         return  view;
     }
-
     private void initUi() {
         edtGoodsName = view.findViewById(R.id.name_of_goods_fragment);
         edtGoodsPrice = view.findViewById(R.id.price_of_goods_fragment);
-        edtPersonAdd = view.findViewById(R.id.person_add_goods_fragment);
         btnAdd = view.findViewById(R.id.add_button_fragment);
         rcvGoods = view.findViewById(R.id.rcv_goods);
+        cbDung = view.findViewById(R.id.cb_dung);
+        cbAnh = view.findViewById(R.id.cb_anh);
     }
-    private void addGoods() {
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void addGoods() throws ParseException {
         String name = setStringName(edtGoodsName.getText().toString().trim());
         String price = edtGoodsPrice.getText().toString().trim();
-        String personAdd = setStringPerson(edtPersonAdd.getText().toString().trim());
-        String date = setDate(java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime()));
-        if (name.equals("") || price.equals("") || personAdd.equals("")) return;
+
+        boolean blDung = cbDung.isChecked();
+        boolean blAnh = cbAnh.isChecked();
+        String personAdd;
+        if (blAnh != blDung) {
+            if (blDung) personAdd = "Đăng Dũng";
+            else personAdd = "Trung Anh";
+        } else {
+            personAdd = "";
+        }
+
+        String date = new SimpleDateFormat("dd/MM/YYYY", Locale.getDefault()).format(new Date());
+        if (blAnh == true && blDung == true) {
+            cbAnh.setChecked(false);
+            cbDung.setChecked(false);
+            Toast.makeText(getActivity(), "Bạn chỉ được chọn 1 người thêm!", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (name.equals("") || price.equals("") || personAdd.equals("")) {
+            Toast.makeText(getActivity(), "Bạn điền thiếu thông tin!", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         Goods goods = new Goods(name, Integer.parseInt(price), personAdd, date);
         GoodsDatabase.getInstance(getActivity()).goodsDAO().insertGoods(goods);
-        Toast.makeText(getActivity(), "Add goods successfully", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "Thêm thành công!", Toast.LENGTH_LONG).show();
 
         edtGoodsName.setText("");
         edtGoodsPrice.setText("");
-        edtPersonAdd.setText("");
+        cbAnh.setChecked(false);
+        cbDung.setChecked(false);
         listGoods = GoodsDatabase.getInstance(getActivity()).goodsDAO().getListGoods();
         goodsAdapter.setData(listGoods);
     }
 
     private String setStringName(String s) {
         String tg = "";
-        if (s.charAt(0) > 'a' && s.charAt(0) < 'z') tg += String.valueOf(s.charAt(0)).toUpperCase() + "";
-        else tg += s.charAt(0) + "";
-        for (int i=1; i<s.length(); i++) {
-            
-            tg += s.charAt(i) + "";
+        if (s.length() != 0) {
+            if (s.charAt(0) >= 'a' && s.charAt(0) <= 'z')
+                tg += String.valueOf(s.charAt(0)).toUpperCase() + "";
+            else tg += s.charAt(0) + "";
+            for (int i = 1; i < s.length(); i++) {
+
+                tg += s.charAt(i) + "";
+            }
         }
         return tg;
     }
-
-    private String setStringPerson(String st) {
-        String s = st.toLowerCase();
-        String tg = "";
-        tg += String.valueOf(s.charAt(0)).toUpperCase() + "";
-        for (int i=1; i<s.length(); i++) {
-            if (s.charAt(i) != ' ' && s.charAt(i-1) == ' ') tg += String.valueOf(s.charAt(i)).toUpperCase() + "";
-            else tg += s.charAt(i) + "";
-        }
-        return tg;
-    }
-
-    private String setDate(String s) {
-        String tg = "";
-        for (int i=0; i<12; i++) {
-            tg += s.charAt(i) + "";
-        }
-        return tg;
-    }
-
 }

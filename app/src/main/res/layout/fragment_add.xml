@@ -50,7 +50,7 @@
         android:layout_width="329dp"
         android:layout_height="44dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/edit_text_bg"
+        android:background="@drawable/edit_text_add_bt"
         android:hint="Name of goods"
         android:paddingLeft="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +63,7 @@
         android:layout_width="329dp"
         android:layout_height="44dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/edit_text_bg"
+        android:background="@drawable/edit_text_add_bt"
         android:hint="Amount of money"
         android:inputType="number"
         android:paddingLeft="10dp"
@@ -72,25 +72,36 @@
         app:layout_constraintTop_toBottomOf="@+id/name_of_goods_fragment"
         app:layout_constraintWidth_percent=".8" />
 
-    <EditText
-        android:id="@+id/person_add_goods_fragment"
-        android:layout_width="329dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="20dp"
 
-        android:background="@drawable/edit_text_bg"
-        android:hint="Person add"
-        android:paddingLeft="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <CheckBox
+        android:id="@+id/cb_dung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="#3F51B5"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="24dp"
+        android:text="Đăng Dũng"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/price_of_goods_fragment"
-        app:layout_constraintWidth_percent=".8" />
+        app:layout_constraintTop_toBottomOf="@+id/price_of_goods_fragment" />
+
+    <CheckBox
+        android:id="@+id/cb_anh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="24dp"
+        android:buttonTint="#3F51B5"
+        android:text="Trung Anh"
+        app:layout_constraintStart_toEndOf="@+id/cb_dung"
+        app:layout_constraintTop_toBottomOf="@+id/price_of_goods_fragment" />
 
     <Button
         android:id="@+id/add_button_fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="96dp"
         android:backgroundTint="#892587"
         android:text="ADD"
         android:textColor="@color/white"
@@ -98,7 +109,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/person_add_goods_fragment" />
+        app:layout_constraintTop_toBottomOf="@+id/price_of_goods_fragment" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_goods"

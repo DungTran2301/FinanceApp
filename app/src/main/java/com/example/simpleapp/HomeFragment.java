@@ -1,11 +1,15 @@
 package com.example.simpleapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.app.Activity;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,10 +28,14 @@ import android.widget.Toast;
 import com.example.simpleapp.database.Goods;
 import com.example.simpleapp.database.GoodsDatabase;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,7 +45,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
     private RecyclerView rcvGoodsHome;
     private View view;
-    private TextView textViewSumMoney;
+    private TextView textViewSumMoney, tvComment;
     private GoodsAdapterHome goodsAdapterHome;
     private List<Goods> listGoods;
     private Button summary_button;
@@ -82,6 +90,7 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -94,7 +103,19 @@ public class HomeFragment extends Fragment {
         listGoods = GoodsDatabase.getInstance(getActivity()).goodsDAO().getListGoods();
         goodsAdapterHome.setData(listGoods);
 
-        textViewSumMoney.setText("Đ " + String.format("%,d", sumMoney()));
+        long summaryMoney = sumMoney();
+        textViewSumMoney.setText("Đ " + String.format("%,d", summaryMoney));
+        GregorianCalendar gregorianCalendar = new GregorianCalendar();
+        int date = gregorianCalendar.get(Calendar.DATE);
+
+        if (summaryMoney / date <= 70000) {
+            tvComment.setText("Chi tiêu hợp lý");
+            tvComment.setTextColor(R.color.green);
+        } else {
+            tvComment.setText("Chi tiêu quá mức");
+            tvComment.setTextColor(R.color.red);
+        }
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         rcvGoodsHome.setLayoutManager(linearLayoutManager);
         rcvGoodsHome.setAdapter(goodsAdapterHome);
@@ -131,14 +152,17 @@ public class HomeFragment extends Fragment {
         textViewSumMoney = view.findViewById(R.id.home_text_sum_money);
         summary_button = view.findViewById(R.id.home_summary);
         tasks_button = view.findViewById(R.id.home_tasks);
+        tvComment = view.findViewById(R.id.comment);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public long sumMoney() {
         long sum = 0;
-        String thisMonth = getMonth(java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime()));
+        String thisDate = new SimpleDateFormat("dd/MM/YYYY", Locale.getDefault()).format(new Date());
+        String thisMonth = getMonth(thisDate);
         for (int i=listGoods.size()-1; i>=0; i--) {
             Goods goods = listGoods.get(i);
-
+//            if (true){
             if (getMonth(goods.getDateBuyGoods()).equals(thisMonth)) {
                 sum += goods.getGoodsPrice();
             }
@@ -148,13 +172,14 @@ public class HomeFragment extends Fragment {
     }
     private String getMonth(String s) {
         String tg = "";
-        for (int i=0; i<3; i++) {
-            tg += s.charAt(i) + "";
+        if (s.length() == 1) {
+            tg += "0" + s;
+        } else if(s.length() == 2) {
+
+        } else {
+            tg += s.charAt(3) + "";
+            tg += s.charAt(4) + "";
         }
         return tg;
-    }
-    public void toLogoutActivity() {
-//        Intent intent = new Intent(this.HomeFragment., LoginTab.class);
-//        startActivity(intent);
     }
 }

@@ -11,15 +11,11 @@
         android:id="@+id/addFragment"
         android:icon="@drawable/summary"
         app:showAsAction="never"
-        android:title="Summary" />
+        android:title="Add spending" />
     <item
         android:id="@+id/listFragment"
         android:icon="@drawable/list"
         app:showAsAction="never"
         android:title="List" />
-    <item
-        android:id="@+id/chartFragment"
-        android:icon="@drawable/bar_chart_se"
-        app:showAsAction="never"
-        android:title="Chart" />
+
 </menu>

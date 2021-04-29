@@ -4,15 +4,14 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/logo_app"
+        android:label="Good Finance"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SimpleApp">
         <activity android:name=".AddTaskActivity"></activity>
         <activity android:name=".TaskActivity" />
         <activity android:name=".SummaryActivity" />
-        <activity android:name=".Personal" />
         <activity android:name=".AddSpend" />
         <activity android:name=".LoginTab" />
         <activity android:name=".IntroduceActivity">

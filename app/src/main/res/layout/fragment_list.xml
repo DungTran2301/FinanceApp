@@ -51,7 +51,7 @@
         android:id="@+id/rcv_tasks"
         android:layout_width="match_parent"
         android:layout_height="658dp"
-        android:background="#C31CA3D4"
+        android:background="#C215499F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
