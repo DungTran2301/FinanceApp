@@ -2,6 +2,7 @@ package com.example.simpleapp;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
@@ -90,6 +91,7 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @SuppressLint("ResourceAsColor")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -110,10 +112,10 @@ public class HomeFragment extends Fragment {
 
         if (summaryMoney / date <= 70000) {
             tvComment.setText("Chi tiêu hợp lý");
-            tvComment.setTextColor(R.color.green);
+            tvComment.setTextColor(Color.parseColor("#238C2A"));
         } else {
             tvComment.setText("Chi tiêu quá mức");
-            tvComment.setTextColor(R.color.red);
+            tvComment.setTextColor(Color.parseColor("#C81D1E"));
         }
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -158,7 +160,7 @@ public class HomeFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public long sumMoney() {
         long sum = 0;
-        String thisDate = new SimpleDateFormat("dd/MM/YYYY", Locale.getDefault()).format(new Date());
+        String thisDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
         String thisMonth = getMonth(thisDate);
         for (int i=listGoods.size()-1; i>=0; i--) {
             Goods goods = listGoods.get(i);

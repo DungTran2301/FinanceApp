@@ -1,43 +1,36 @@
 package com.example.simpleapp;
 
-import android.content.Intent;
-import android.os.Bundle;
-
-import com.airbnb.lottie.LottieAnimationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
-import android.view.View;
-
-import android.view.Menu;
+import android.app.Activity;
+import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import static com.example.simpleapp.R.id.fragment;
 
 public class MainActivity extends AppCompatActivity {
+    private BottomNavigationView bottomNavigationView;
+    private NavController navController;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_spend);
 
-//    ImageView logo, splashImg;
-//    LottieAnimationView lottieAnimationView;
-//    private Button next_intro;
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_introduce);
-//
-//        Button next_intro = findViewById(R.id.next_intro);
-//        next_intro.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openLoginLayout();
-//            }
-//        });
-//    }
-//    public void openLoginLayout() {
-//        Intent intent = new Intent(MainActivity.this, LoginTab.class);
-//        startActivity(intent);
-//    }
+        bottomNavigationView = findViewById(R.id.menu_bar);
+        navController = Navigation.findNavController(this, R.id.fragment);
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+    }
 }

@@ -79,7 +79,7 @@ public class SummaryActivity extends AppCompatActivity {
         back_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SummaryActivity.this, AddSpend.class);
+                Intent intent = new Intent(SummaryActivity.this, MainActivity.class);
                 startActivity(intent);
 //                FragmentManager manager = getFragmentManager();
 //                FragmentTransaction transaction = manager.beginTransaction();

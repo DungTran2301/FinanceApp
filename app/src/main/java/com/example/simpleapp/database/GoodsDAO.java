@@ -12,4 +12,5 @@ public interface GoodsDAO {
     void insertGoods(Goods goods);
     @Query("SELECT * FROM goods")
     List <Goods> getListGoods();
+
 }

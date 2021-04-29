@@ -139,7 +139,7 @@ public class AddFragment extends Fragment {
             personAdd = "";
         }
 
-        String date = new SimpleDateFormat("dd/MM/YYYY", Locale.getDefault()).format(new Date());
+        String date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
         if (blAnh == true && blDung == true) {
             cbAnh.setChecked(false);
             cbDung.setChecked(false);

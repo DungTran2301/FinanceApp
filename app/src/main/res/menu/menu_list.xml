@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/show_list"
-        android:icon="@drawable/summary"
+        android:id="@+id/unFinishedFragment"
+        android:icon="@drawable/ic_baseline_remove_done_24"
         app:showAsAction="never"
-        android:title="Display" />
+        android:title="Chưa hoàn thành" />
     <item
-        android:id="@+id/add_list"
-        android:icon="@drawable/add"
+        android:id="@+id/finishedFragment"
+        android:icon="@drawable/ic_baseline_done_all_24"
         app:showAsAction="never"
-        android:title="Add things" />
+        android:title="Đã hoàn thành" />
 </menu>

@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.Toast;
 
 import com.example.simpleapp.database.Goods;
@@ -43,6 +44,7 @@ public class ListFragment extends Fragment {
     private TasksAdapter tasksAdapter;
     private List<Tasks> listTasks;
     private FloatingActionButton btnAddTask;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -51,6 +53,7 @@ public class ListFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Object ViewHolder;
 
     public ListFragment() {
         // Required empty public constructor
@@ -95,11 +98,13 @@ public class ListFragment extends Fragment {
         tasksAdapter = new TasksAdapter();
         listTasks = new ArrayList<>();
         listTasks = TasksDatabase.getInstance(getActivity()).tasksDAO().getListTasks();
-        tasksAdapter.setData(listTasks);
 
+        tasksAdapter.setData(listTasks);
+        tasksAdapter.setContext(getContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         rcvTasks.setLayoutManager(linearLayoutManager);
         rcvTasks.setAdapter(tasksAdapter);
+
 
         btnAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +117,16 @@ public class ListFragment extends Fragment {
         //addTasks();
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(tasksAdapter != null){
+            tasksAdapter.setData(TasksDatabase.getInstance(getContext()).tasksDAO().getListTasks());
+            tasksAdapter.notifyDataSetChanged();
+        }
+    }
+
     private void addTasks() {
         Tasks tasks = new Tasks("Làm bài tập Kiến Trúc máy tính", "17/5/2021", false);
         Tasks tasks1 = new Tasks("Làm lại căn cước công dân", "20/5/2021", false);

@@ -84,14 +84,14 @@ public class AddTaskActivity extends AppCompatActivity {
         backFromAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddTaskActivity.this, AddSpend.class);
+                Intent intent = new Intent(AddTaskActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void updateLabel() {
-        String myFormat = "dd/MM/YYYY"; //In which you need put here
+        String myFormat = "dd/MM/YYYY";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         edtDueDate.setText(sdf.format(myCalendar.getTime()));
