@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_spend);
+        setContentView(R.layout.activity_main);
 
         bottomNavigationView = findViewById(R.id.menu_bar);
         navController = Navigation.findNavController(this, R.id.fragment);

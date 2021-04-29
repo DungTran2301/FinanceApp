@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddSpend">
+    tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -22,7 +22,7 @@
             android:id="@+id/fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="707dp"
+            android:layout_height="710dp"
             app:defaultNavHost="true"
             app:layout_constraintBottom_toTopOf="@+id/menu_bar"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,6 +40,7 @@
             app:itemTextColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintWidth_percent="1"
             app:menu="@menu/menu_main">

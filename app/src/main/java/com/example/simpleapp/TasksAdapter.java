@@ -77,7 +77,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
         } else {
             if (tg >= 0) {
                 if (tg <= 2) {
-                    holder.tvNumberDayToDueDate.setText("Sắp hết hạn " + "(" + tg + " ngày)");
+                    holder.tvNumberDayToDueDate.setText("Sắp hết hạn " + "(còn" + tg + " ngày)");
                     holder.tvNumberDayToDueDate.setTextColor(Color.parseColor("#C81D1E"));
                 } else {
                     holder.tvNumberDayToDueDate.setText("Còn " + tg + " ngày");

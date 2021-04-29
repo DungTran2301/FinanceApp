@@ -19,9 +19,4 @@
         android:name="com.example.simpleapp.ListFragment"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" />
-    <fragment
-        android:id="@+id/chartFragment"
-        android:name="com.example.simpleapp.ChartFragment"
-        android:label="fragment_chart"
-        tools:layout="@layout/fragment_chart" />
 </navigation>

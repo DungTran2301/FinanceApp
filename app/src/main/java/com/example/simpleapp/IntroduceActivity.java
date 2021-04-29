@@ -30,7 +30,7 @@ public class IntroduceActivity extends AppCompatActivity {
         //this.deleteDatabase("goods");
 //        tvMadeBy.findViewById(R.id.tv_made_by);
 //
-//        tvMadeBy.animate().translationY(-1000).setDuration(1000).setStartDelay(4000);
+//        tvMadeBy.animate().translationY(-1000).setDuration(1000).setStartDelay(10000);
         Button next_intro = findViewById(R.id.next_intro);
         next_intro.setOnClickListener(new View.OnClickListener() {
             @Override
