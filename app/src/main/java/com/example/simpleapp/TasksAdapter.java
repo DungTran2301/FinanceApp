@@ -47,10 +47,6 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
         notifyDataSetChanged();
     }
     public TasksAdapter(){};
-//    public TasksAdapter(Context context, List<Tasks> listTasks) {
-//        this.context = context;
-//        this.listTasks = listTasks;
-//    }
     @NonNull
     @Override
     public TasksAdapter.TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -116,7 +112,6 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
                 }
             }
         });
-
     }
 
     @Override

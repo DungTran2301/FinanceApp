@@ -81,13 +81,6 @@ public class SummaryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(SummaryActivity.this, MainActivity.class);
                 startActivity(intent);
-//                FragmentManager manager = getFragmentManager();
-//                FragmentTransaction transaction = manager.beginTransaction();
-//                transaction.add(R.id.homeFragment, HomeFragment.class);
-//                transaction.addToBackStack(null);
-//                transaction.commit();
-//                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//                fragmentTransaction.replace(R.id.summaryActivity, new HomeFragment()).commit();
             }
         });
     }

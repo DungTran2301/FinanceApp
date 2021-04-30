@@ -43,8 +43,6 @@ public class AddTaskActivity extends AppCompatActivity {
         listTasks = TasksDatabase.getInstance(this).tasksDAO().getListTasks();
         tasksAdapter.setData(listTasks);
 
-
-
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
             @RequiresApi(api = Build.VERSION_CODES.N)

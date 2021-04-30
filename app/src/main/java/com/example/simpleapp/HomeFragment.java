@@ -126,7 +126,6 @@ public class HomeFragment extends Fragment {
         to_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                toLogoutActivity();
                 Intent intent = new Intent(getActivity(), LoginTab.class);
                 getActivity().startActivity(intent);
             }
@@ -164,7 +163,6 @@ public class HomeFragment extends Fragment {
         String thisMonth = getMonth(thisDate);
         for (int i=listGoods.size()-1; i>=0; i--) {
             Goods goods = listGoods.get(i);
-//            if (true){
             if (getMonth(goods.getDateBuyGoods()).equals(thisMonth)) {
                 sum += goods.getGoodsPrice();
             }
