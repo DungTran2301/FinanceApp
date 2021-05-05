@@ -116,5 +116,4 @@ public class AddTaskActivity extends AppCompatActivity {
         tasksAdapter.setData(listTasks);
         return 1;
     }
-
 }

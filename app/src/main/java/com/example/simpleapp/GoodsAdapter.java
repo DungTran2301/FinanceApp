@@ -34,7 +34,6 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.GoodViewHold
         if (goods == null) return;
         holder.tvGoodsName.setText(goods.getGoodsName());
         holder.tvGoodsPrice.setText(String.format("%,d", goods.getGoodsPrice()) + " Đ");
-        //holder.tvGoodsPrice.setText(String.valueOf(goods.getGoodsPrice()));
         holder.tvPersonAdd.setText(goods.getPersonBuyGoods());
         holder.tvGoodsDate.setText(goods.getDateBuyGoods());
     }

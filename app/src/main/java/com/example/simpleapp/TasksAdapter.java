@@ -88,7 +88,6 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
         holder.cbContent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
                 listTasks.get(position).setStatus(isChecked);
                 TasksDatabase.getInstance(context).tasksDAO().Update(listTasks.get(position));
                 Log.e("TaskAdapter",""+isChecked);
@@ -132,7 +131,6 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
             tvIdTask = itemView.findViewById(R.id.tv_id_task);
             tvNumberDayToDueDate = itemView.findViewById(R.id.tv_task_number_date_to_due_date);
         }
-
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
     public int numberDaysToDueDate (String dueDateThisTask) {

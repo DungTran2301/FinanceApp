@@ -144,7 +144,6 @@ public class SummaryActivity extends AppCompatActivity {
         if (s.equals("Total")) {
             for (int i=listGoods.size()-1; i>=0; i--) {
                 Goods goods = listGoods.get(i);
-
                 if (getMonth(goods.getDateBuyGoods()).equals(thisMonth)) {
                     sum += goods.getGoodsPrice();
                 }
@@ -153,7 +152,6 @@ public class SummaryActivity extends AppCompatActivity {
         } else {
             for (int i=listGoods.size()-1; i>=0; i--) {
                 Goods goods = listGoods.get(i);
-
                 if (getMonth(goods.getDateBuyGoods()).equals(thisMonth)) {
                     if ( goods.getPersonBuyGoods().equals(s))
                         sum += goods.getGoodsPrice();
@@ -167,7 +165,6 @@ public class SummaryActivity extends AppCompatActivity {
         if (s.length() == 1) {
             tg += "0" + s;
         } else if(s.length() == 2) {
-
         } else {
             tg += s.charAt(3) + "";
             tg += s.charAt(4) + "";

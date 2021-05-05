@@ -12,7 +12,6 @@
         <activity android:name=".AddTaskActivity"></activity>
         <activity android:name=".TaskActivity" />
         <activity android:name=".SummaryActivity" />
-        <activity android:name=".AddSpend" />
         <activity android:name=".LoginTab" />
         <activity android:name=".IntroduceActivity">
             <intent-filter>

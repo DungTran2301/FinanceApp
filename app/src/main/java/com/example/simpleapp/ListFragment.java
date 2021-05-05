@@ -92,7 +92,6 @@ public class ListFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_list, container, false);
 
-
         rcvTasks = view.findViewById(R.id.rcv_tasks);
         btnAddTask = view.findViewById(R.id.todo_add_button);
         tasksAdapter = new TasksAdapter();
@@ -104,7 +103,6 @@ public class ListFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         rcvTasks.setLayoutManager(linearLayoutManager);
         rcvTasks.setAdapter(tasksAdapter);
-
 
         btnAddTask.setOnClickListener(new View.OnClickListener() {
             @Override

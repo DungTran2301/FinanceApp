@@ -38,7 +38,6 @@ public class GoodsAdapterHome extends RecyclerView.Adapter<GoodsAdapterHome.Good
         holder.tvGoodsDateHome.setText(goods.getDateBuyGoods());
     }
 
-
     @Override
     public int getItemCount() {
         if(list.size() != 0) return list.size();
@@ -51,12 +50,10 @@ public class GoodsAdapterHome extends RecyclerView.Adapter<GoodsAdapterHome.Good
         private TextView tvGoodsDateHome;
         public GoodViewHolder(@NonNull View itemView) {
             super(itemView);
-
             tvGoodsNameHome = itemView.findViewById(R.id.tv_goods_name_home);
             tvGoodsPriceHome = itemView.findViewById(R.id.tv_goods_price_home);
             tvPersonAddHome = itemView.findViewById(R.id.tv_person_add_home);
             tvGoodsDateHome = itemView.findViewById(R.id.tv_goods_date_home);
-
         }
     }
 }
